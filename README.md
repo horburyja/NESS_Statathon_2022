@@ -1,6 +1,6 @@
 # Introduction:
 
-Statathon will be held jointly by UConn Statistics Department and New England Statistical Society in the 35th NESS Symposium (May 22, 2022 – May 25, 2022). Statathon is a statistical data science invention marathon. Anyone who has an interest in data science can attend Statathon to approach a real world data science problem, some of which are local, in new and innovative ways. It emphasizes the statistical aspects (insight, interpretation, significance, etc.) of data science problems that are often overlooked in many hackathons.
+Statathon 2022 will be held jointly by UConn Statistics Department and New England Statistical Society in the 35th NESS Symposium (May 22, 2022 – May 25, 2022). Statathon is a statistical data science invention marathon. Anyone who has an interest in data science can attend Statathon to approach a real world data science problem, some of which are local, in new and innovative ways. It emphasizes the statistical aspects (insight, interpretation, significance, etc.) of data science problems that are often overlooked in many hackathons.
 
 # Theme 1: Customer Retention
 
