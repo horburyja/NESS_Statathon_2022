@@ -4,8 +4,8 @@ import numpy as np
 
 # load raw training data
 train_raw = pd.read_csv('data/train.csv')
-cols_to_drop = ['id', 'cancel', 'year', 'zip.code']
-train_raw = train_raw.drop(cols_to_drop, axis=1) # id and response not used for training, others are irrelevant
+cols_to_drop = ['id', 'year', 'zip.code']
+train_raw = train_raw.drop(cols_to_drop, axis=1) # drop irrelevant features
 
 print("\n--DISPLAYING DATAFRAME INFO--\n")
 print(train_raw.info(), "\n")
@@ -50,9 +50,6 @@ train_clean = train_clean[train_clean['tenure'] < train_clean['ni.age']]
 train_clean = train_clean[train_clean['len.at.res'] < train_clean['ni.age']]
 print(train_clean.shape, "\n")
 
-
-
-"""
 # verify no inconsistencies in numerical and categorical values
 print("Numeric cols [{}]: {}\n".format(len(numeric_cols), numeric_cols))
 for col in numeric_cols:
@@ -64,16 +61,10 @@ for col in non_numeric_cols:
     print("Categories of {}: {}".format(col, train_clean[col].unique()))
     print(train_clean[col].value_counts(dropna=False), "\n")
 
-# remove outliers from numerical data
-print("--REMOVING OUTLIERS--\n")
-for col in numeric_cols:
-    q_low = train_clean[col].quantile(0.01)
-    q_high = train_clean[col].quantile(0.99)
-    train_clean = train_clean[(train_clean[col] < q_high) & (train_clean[col] > q_low)]
-print(train_clean.shape, "\n")
-"""
-
 # make every category a dummy variable
 print("--CREATING DUMMY VARIABLES--\n")
 train_clean = pd.get_dummies(train_clean, non_numeric_cols)
 print(train_clean.shape, "\n")
+
+# save cleaned df as csv
+train_clean.to_csv('data/train_clean.csv')
