@@ -7,33 +7,14 @@ import numpy as np
 # load raw data
 train_raw = pd.read_csv('data/train.csv')
 test_raw = pd.read_csv('data/test.csv')
-print("\nRaw training df of shape {}\n".format(train_raw.shape))
-print(train_raw.info(), "\n")
-
-# missing data percentage list
-print("Missing training data:")
-
-types = train_raw.dtypes
-
-total_pct_missing, colnum = 0, 0
-for col in train_raw.columns:
-    mean_missing = np.mean(train_raw[col].isnull())
-    pct_missing = round(mean_missing * 100, 5) # round to 5 decimal places
-    total_pct_missing += pct_missing
-    
-    print('{}. {} - {}% ({})'.format(colnum, col, pct_missing, types[col]))
-    colnum += 1
-
-print('\n{}% missing in total\n'.format(total_pct_missing))
 
 train_raw_non_numeric = train_raw.select_dtypes(exclude=[np.number])
 non_numeric_cols = train_raw_non_numeric.columns.values
-print("Non numeric cols [{}]: {}\n".format(len(non_numeric_cols),non_numeric_cols))
 
 train_raw_numeric = train_raw.select_dtypes(include=[np.number])
 numeric_cols = train_raw_numeric.columns.values
-print("Numeric cols [{}]: {}\n".format(len(numeric_cols), numeric_cols))
 
+"""
 # generate histograms and display descriptive stats
 print("--DISPLAY DESCRIPTIVE STATISTICS--")
 for col in numeric_cols:
@@ -42,3 +23,4 @@ for col in numeric_cols:
     plt.savefig('figs/histograms/{}_hist.png'.format(col))
 
     print("{} descriptive statistics:\n{}\n".format(col, train_raw[col].describe()))
+    """
