@@ -45,9 +45,10 @@ print(train_clean.shape, "\n")
 train_clean = train_clean[train_clean['ni.age'] <= 100]
 print(train_clean.shape, "\n")
 
-# filter policy holders younger than tenure or length at residence
+# filter out irregularities
 train_clean = train_clean[train_clean['tenure'] < train_clean['ni.age']]
 train_clean = train_clean[train_clean['len.at.res'] < train_clean['ni.age']]
+train_clean = train_clean[train_clean['cancel'] > -1]
 print(train_clean.shape, "\n")
 
 # verify no inconsistencies in numerical and categorical values
@@ -61,10 +62,12 @@ for col in non_numeric_cols:
     print("Categories of {}: {}".format(col, train_clean[col].unique()))
     print(train_clean[col].value_counts(dropna=False), "\n")
 
+"""
 # make every category a dummy variable
 print("--CREATING DUMMY VARIABLES--\n")
 train_clean = pd.get_dummies(train_clean, non_numeric_cols)
 print(train_clean.shape, "\n")
+"""
 
 # save cleaned df as csv
 train_clean.to_csv('data/train_clean.csv')

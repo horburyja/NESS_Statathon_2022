@@ -16,7 +16,6 @@ train_clean_numeric = train_clean.select_dtypes(include=[np.number])
 numeric_cols = train_clean_numeric.columns.values
 
 # generate histograms
-print("--DISPLAY DESCRIPTIVE STATISTICS--")
 for col in numeric_cols:
     hist = train_clean[[col]].hist(bins=100) # keep number of bins at 100
     plt.title("{}_hist".format(col))
