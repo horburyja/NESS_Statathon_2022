@@ -6,8 +6,6 @@ import numpy as np
 
 # load raw data
 train_clean = pd.read_csv('data/train_clean.csv')
-cancel = train_clean['cancel']
-train_clean = train_clean.drop(['cancel'], axis=1)
 
 train_clean_non_numeric = train_clean.select_dtypes(exclude=[np.number])
 non_numeric_cols = train_clean_non_numeric.columns.values
